@@ -1,4 +1,0 @@
-pip install python-dotenv
-pip install InstructorEmbedding
-pip install chromadb langchain PyPDF2 openai
-pip install torch torchvision torchaudio
