@@ -1,10 +1,8 @@
 import os
 import requests
 from dotenv import load_dotenv
-
 # Load environment variables from .env file
 load_dotenv()
-
 def query_gemini_ai(prompt: str) -> str:
     """
     Queries the Gemini AI API to get a response for the prompt.
@@ -57,9 +55,4 @@ def query_gemini_ai(prompt: str) -> str:
         return f"Response Parsing Error: {e}"
     except Exception as e:
         return f"Unexpected Error: {e}"
-
 # Example usage
-if __name__ == "__main__":
-    test_prompt = "Write a short poem about technology"
-    result = query_gemini_ai(test_prompt)
-    print(result)

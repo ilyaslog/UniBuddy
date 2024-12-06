@@ -1,22 +1,27 @@
-# app/pdf_processor.py
-import os
-import tempfile
-from langchain_community.document_loaders import PyMuPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.documents import Document
+from PyPDF2 import PdfReader
 
-def process_document(file) -> list[Document]:
-    """Processes an uploaded PDF file by converting it to text chunks."""
-    temp_file = tempfile.NamedTemporaryFile("wb", suffix=".pdf", delete=False)
-    temp_file.write(file.read())
-    temp_file.close()  # Close the file here to ensure it can be used by PyMuPDFLoader
-    loader = PyMuPDFLoader(temp_file.name)
-    docs = loader.load()
-    os.unlink(temp_file.name)  # Make sure to delete the temporary file after loading
+def process_document(pdf_file):
+    try:
+        print("Reading PDF...")
+        pdf_reader = PdfReader(pdf_file)
+        text = ""
+        for i, page in enumerate(pdf_reader.pages):
+            page_text = page.extract_text()
+            if page_text:
+                print(f"Page {i+1} extracted: {len(page_text)} characters")
+                text += page_text + "\n"
+            else:
+                print(f"Page {i+1} has no text.")
+        
+        # Split the text into chunks (e.g., 500 characters per chunk)
+        chunk_size = 500
+        chunks = [
+            {"page_content": text[i:i+chunk_size], "metadata": {"page": i // chunk_size + 1}}
+            for i in range(0, len(text), chunk_size)
+        ]
 
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=400,
-        chunk_overlap=100,
-        separators=["\n\n", "\n", ".", "?", "!", " ", ""],
-    )
-    return text_splitter.split_documents(docs)
+        print(f"Generated {len(chunks)} chunks.")
+        return chunks
+    except Exception as e:
+        print(f"Error processing document: {e}")
+        raise
