@@ -34,7 +34,7 @@ def query_gemini_ai(prompt: str) -> str:
             }]
         }],
         "generationConfig": {
-            "maxOutputTokens": 100,
+            "maxOutputTokens": 200,
             "temperature": 0.7
         }
     }

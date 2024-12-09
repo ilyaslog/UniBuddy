@@ -18,13 +18,14 @@ def handle_query(pdf_file, query):
 
     document_text = "\n".join(["\n".join(doc) for doc in results['documents']])
     
-    gemini_prompt = f"Given the following documents, answer the question:\n\n{document_text}\n\nQuestion: {query}"
+    gemini_prompt = f"You are an expert AI tutor skilled in explaining complex concepts clearly and concisely. Using the following documents as your knowledge base, provide a thorough and accurate answer to the question. When appropriate, include examples or explanations to ensure understanding.\n\nDocuments:\n{document_text}\n\nQuestion:\n{query}\n\nYour response should be well-structured and informative"
     answer = query_gemini_ai(gemini_prompt)
     
     return answer
 # app/main.py
 if __name__ == "__main__":
-    with open("app\Resume.pdf", "rb") as f: 
-        query = "who is ilyas?"
+    with open("IoT-Chapitre1.pdf", "rb") as f: 
+        query = "generate me a sumarry about this document?"
         response = handle_query(f, query)
         print("AI Response:", response)
+
