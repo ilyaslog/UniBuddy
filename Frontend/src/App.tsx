@@ -5,10 +5,20 @@ import { LoadingScreen } from './components/common/LoadingScreen';
 import { useMinimumLoadingTime } from './hooks/useMinimumLoadingTime';
 
 // Lazy load components
-const LoginForm = lazy(() => import('./components/auth/LoginForm').then(module => ({ default: module.LoginForm })));
-const SignupForm = lazy(() => import('./components/auth/SignupForm').then(module => ({ default: module.SignupForm })));
-const SpecialtySelector = lazy(() => import('./components/specialties/SpecialtySelector').then(module => ({ default: module.SpecialtySelector })));
-const ChatInterface = lazy(() => import('./components/chat/ChatInterface').then(module => ({ default: module.ChatInterface })));
+const LoginForm = lazy(() =>
+  import('./components/auth/LoginForm').then((module) => ({ default: module.LoginForm }))
+);
+const SignupForm = lazy(() =>
+  import('./components/auth/SignupForm').then((module) => ({ default: module.SignupForm }))
+);
+const SpecialtySelector = lazy(() =>
+  import('./components/specialties/SpecialtySelector').then((module) => ({
+    default: module.SpecialtySelector,
+  }))
+);
+const ChatInterface = lazy(() =>
+  import('./components/chat/ChatInterface').then((module) => ({ default: module.ChatInterface }))
+);
 
 function AppContent() {
   const isLoading = useMinimumLoadingTime(2000); // 2 seconds minimum loading time
@@ -40,4 +50,4 @@ function App() {
   );
 }
 
-export default App;
+export default p;
