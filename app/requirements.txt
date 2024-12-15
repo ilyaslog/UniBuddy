@@ -1,0 +1,4 @@
+PyPDF2
+pinecone-client
+sentence-transformers
+pinecone-client
