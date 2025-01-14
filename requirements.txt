@@ -1,0 +1,9 @@
+Flask
+flask-cors
+pdfplumber
+openai==0.28
+azure.storage.blob
+azure-storage-blob
+pinecone
+pyodbc
+numpy
