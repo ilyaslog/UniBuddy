@@ -110,7 +110,7 @@ Démarrez l’UI avec la commande suivante :
 
 ## 📧 Contacts :
 
-- 📩 ilyas.himit@uir.ac.ma
+- 📩 himitilyas@gmail.com
 - 📩 saad.benmoussa@uir.ac.ma
 - 📩 Haytam.elhilali@uir.ac.ma
 - 📩 Fadi.bahtat@uir.ac.ma
